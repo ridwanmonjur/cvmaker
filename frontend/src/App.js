@@ -32,8 +32,10 @@ function App() {
     setIsLogged(isLogin);
   }, [login]);
   useEffect(() => {
-    const userData = JSON.parse(localStorage.getItem("userData"));
-    const { isLogged, token } = userData
+    let userData = localStorage.getItem("userData") 
+    userData = (userData != null) ? JSON.parse(userData) : { isLogged: false, token: null, id: null }
+    let { isLogged, token } = userData
+    
     getOneUserByUserName().then((data)=> {
       console.log({data})
     })

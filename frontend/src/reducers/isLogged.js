@@ -1,5 +1,8 @@
-const userData = localStorage.getItem("userData")
-const { isLogged, token, id } = JSON.parse(userData)
+let userData = localStorage.getItem("userData") 
+userData = (userData != null) ? JSON.parse(userData) : { isLogged: false, token: null, id: null }
+let { isLogged, token, id } = userData
+
+
 const loggedReducer = (
   state = { isLogin: isLogged, token, id: id, user: {} },
   action
