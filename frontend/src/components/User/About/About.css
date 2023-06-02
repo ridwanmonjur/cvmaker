@@ -1,0 +1,18 @@
+
+
+.text-font{
+    font-size: large;
+    font-family: 'Itim', cursive;
+    text-align: justify;
+}
+
+.bg-color{
+    background-color: rgb(255, 255, 255);
+}
+
+.image-styles{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    text-align: right;
+}
