@@ -2,14 +2,14 @@
 import { getOneUserByUserName, loginApi, updateUserApi, getUsersByUserIdApi } from "../apis/userApi";
 import { toastSuccess, toastErrorCustom } from "../shared/toast";
 import api from "../apis/serverApi";
-import { getEducations } from "./educationAction";
-import { getExperiences } from "./experienceAction";
-import { getprojects } from "./projectAction";
-import { getSkills } from "./skillAction";
+import { getEducations, getEducationsByUserId } from "./educationAction";
+import { getExpeiencesByUserId, getExperiences } from "./experienceAction";
+import { getProjectsByUserId, getprojects } from "./projectAction";
+import { getSkills, getSkillsByUser } from "./skillAction";
 
 export const getOUserByUsername = (username) => async (dispatch) => {
   // eslint-disable-next-line eqeqeq
-  if (username==undefined) username="default"
+  if (username == undefined) username = "default"
 
   try {
     const { data } = await getOneUserByUserName(username);
@@ -35,21 +35,30 @@ export const getOUserByUserId = () => async (dispatch) => {
 export const loginUser = (authData) => async (dispatch) => {
   try {
     const { data } = await loginApi(authData);
-    api.defaults.headers.common["Authorization"] = `Bearer ${data.token}`;
-    localStorage.setItem(
-      "userData",
-      JSON.stringify({
-        token: data.token,
-        isLogged: true,
-        id: data._id
-      })
-    );
-    toastSuccess("Login Successfully");
-    await dispatch({
-      type: "SIGN_IN",
-      payload: { isLogin: true, token: data.token, id: data._id },
-    });
-    
+    if (String(data.message).trim() == "Auth failed") return
+    else {
+      api.defaults.headers.common["Authorization"] = `Bearer ${data.token}`;
+      localStorage.setItem(
+        "userData",
+        JSON.stringify({
+          token: data.token,
+          isLogged: true,
+          id: data._id
+        })
+      );
+      toastSuccess("Login Successfully");
+      await dispatch({
+        type: "SIGN_IN",
+        payload: { isLogin: true, token: data.token, id: data._id },
+      });
+      await dispatch(getOUserByUserId());
+      await dispatch(getEducationsByUserId());
+      await dispatch(getExpeiencesByUserId());
+      await dispatch(getProjectsByUserId());
+      await dispatch(getSkillsByUser());
+    }
+
+
   } catch (error) {
     console.log(error);
     toastErrorCustom(error)
@@ -81,7 +90,7 @@ export const logoutUser = () => {
 export const updateUser = (id, user) => async (dispatch) => {
   try {
     const { data } = await updateUserApi(id, user);
-    console.log({data})
+    console.log({ data })
     dispatch({
       type: "UPDATE_USER",
       payload: data.user,

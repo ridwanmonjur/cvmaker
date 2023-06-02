@@ -2,12 +2,8 @@ import React from "react";
 import "./styles.css";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { getOUserByUserId, loginUser } from "../../../actions/loginAction";
+import { loginUser } from "../../../actions/loginAction";
 import { Link, useHistory } from "react-router-dom";
-import { getEducationsByUserId } from "../../../actions/educationAction";
-import { getExpeiencesByUserId } from "../../../actions/experienceAction";
-import { getProjectsByUserId } from "../../../actions/projectAction";
-import { getSkillsByUser } from "../../../actions/skillAction";
 
 const Login = () => {
   const {
@@ -21,11 +17,6 @@ const Login = () => {
 
   const onSubmit = async (data) => {
     await dispatch(loginUser(data));
-    await dispatch(getOUserByUserId());
-    await dispatch(getEducationsByUserId());
-    await dispatch(getExpeiencesByUserId());
-    await dispatch(getProjectsByUserId());
-    await dispatch(getSkillsByUser());
     await history.push("/user")
   };
 

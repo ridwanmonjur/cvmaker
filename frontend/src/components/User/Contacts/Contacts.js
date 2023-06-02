@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import serverApi from "../../../apis/serverApi";
 import { getMessages } from "../../../actions/messageAction";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 const Contacts = ({ reff }) => {
   const {
@@ -15,13 +16,17 @@ const Contacts = ({ reff }) => {
 
   const [loading, setloading] = useState(false);
   const user = useSelector((state) => state.login?.user);
-
+  let { username } = useParams()
+  username??= "default"
   const dispatch = useDispatch();
 
   const onSubmit = async (data) => {
     try {
       setloading(true);
-      await serverApi.post("/messages", data);
+      await serverApi.post("/messages", {
+        ...data,
+        username
+      });
       setloading(false);
       toast.success("Sent Successfully", {
         position: "top-right",

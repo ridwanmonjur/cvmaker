@@ -43,14 +43,18 @@ code {
   width: 60%;
 }
 
+.header {
+  height: 100vh;
+}
+
 @media only screen and (min-width: 1000px) {
   .w-lg-75 {
     width: 75%;
   }
 
-.header {
-  height: 70vh;
-}
+  .header {
+    height: 70vh;
+  }
 }
 
 .skillbar-percent {

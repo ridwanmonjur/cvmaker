@@ -1,9 +1,11 @@
 const Message = require("../models/MessageModel");
+const User = require("../models/UserModel");
 const mongoose = require("mongoose");
 
 const getAllMessages = async (req, res, next) => {
   try {
-    const messages = await Message.find({});
+    const { userId }= req.userData;
+    const messages = await Message.find({userId});
     res.status(200).json(messages.reverse());
   } catch (error) {
     res.status(500).json({ error });
@@ -11,13 +13,15 @@ const getAllMessages = async (req, res, next) => {
 };
 
 const addMessage = async (req, res, next) => {
+  const user = await User.findOne({username: req.body.username})
+
   const message = new Message({
     _id: new mongoose.Types.ObjectId(),
     name: req.body.name,
     email: req.body.email,
     subject: req.body.subject,
     message: req.body.message,
-    userId: req.body.userId,
+    userId: user._id,
   });
 
   try {
@@ -28,32 +32,7 @@ const addMessage = async (req, res, next) => {
   }
 };
 
-const updateMessage = async (req, res, next) => {
-  const id = req.params.messageId;
-  Message.findByIdAndUpdate(
-    id,
-    {
-      name: req.body.name,
-      email: req.body.email,
-      subject: req.body.subject,
-      message: req.body.message,
-      isSeen: req.body.isSeen,
-      userId: req.body.userId,
-
-    })
-    .then((message2) => {
-      res.status(200).json({
-        message: "Language updated successfully",
-        message2,
-      });
-    })
-    .catch((err) => {
-      res.status(500).json({ error: err });
-    })
-};
-
 module.exports = {
   getAllMessages,
   addMessage,
-  updateMessage,
 };

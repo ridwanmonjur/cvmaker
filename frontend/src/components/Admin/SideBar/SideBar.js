@@ -24,7 +24,7 @@ function SideBar() {
   // INDEX SINGER
   // eslint-disable-next-line eqeqeq
   if (user != undefined) {
-    SidebarData[0].path = `${user?.username}`;
+    SidebarData[0].path = `/${user?.username}`;
   }
   return (
     <>

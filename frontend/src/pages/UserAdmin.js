@@ -72,7 +72,7 @@ function UserAdmin() {
       </div>
       <div>
         <div class="mt-4 alert alert-success" role="alert">
-          Your portfolio link is at <a href={`${process.env.REACT_APP_FRONTEND_ENV}/${users?.username}`}>{process.env.REACT_APP_FRONTEND_ENV}{users?.username}</a>
+          Your portfolio link is at <a href={`${process.env.REACT_APP_FRONTEND_ENV}${users?.username}`}>{process.env.REACT_APP_FRONTEND_ENV}{users?.username}</a>
         </div>
         <form>
           <div className="row w-lg-75 py-5">

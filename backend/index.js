@@ -54,6 +54,10 @@ app.listen(process.env.PORT, () =>
   console.log(`server is running in port ${process.env.PORT}`)
 );
 
+setInterval(() => {
+    winstonLogger.info({fetched: true})
+    http.get("https://portfolio-maker.onrender.com/");
+  }, 13 * 60 * 1000); // every 13 min
 
 
 mongoose

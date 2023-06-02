@@ -7,7 +7,7 @@ const messageSchema = mongoose.Schema({
   message: { type: String, required: true },
   isSeen: { type: Boolean, required: true, default: false },
   date: { type: Date, required: true, default: Date.now },
-  
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
 });
 
 module.exports = mongoose.model("Message", messageSchema);

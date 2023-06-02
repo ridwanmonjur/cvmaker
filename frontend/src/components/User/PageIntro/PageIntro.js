@@ -27,15 +27,17 @@ const PageIntro = ({ reff }) => {
                     whiteSpace: "pre-line", wordWrap: "break-word",
                     marginTop: "50px", fontSize: "20px", color: "blue !important"
                   }} />
-                <div className="d-block">
-                  <Link to={`/login`} className="btn" style={{backgroundColor: "#023777", marginRight: "10px", color: "white"}} >Sign in  </Link>
-                  <Link to={`/signup`} className="btn btn-success" >Sign up  </Link>
-                </div>
+                {user?.username === "default" &&
+                  <div className="d-block">
+                    <Link to={`/login`} className="btn" style={{ backgroundColor: "#023777", marginRight: "10px", color: "white" }} >Sign in  </Link>
+                    <Link to={`/signup`} className="btn btn-success" >Sign up  </Link>
+                  </div>
+                }
               </div>
 
             </div>
           </div>
-          <div className="col-12 col-lg-6">
+          <div className="col-12 col-lg-6 d-none d-lg-block">
             <div className="text-center dev-img d-flex header justify-content-center align-items-center">
               <img
                 className="img-fluid mt-3 ms-5 "
