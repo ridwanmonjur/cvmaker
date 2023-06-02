@@ -22,6 +22,7 @@ function SideBar() {
 
   const user = useSelector((state) => state.login.user);
   // INDEX SINGER
+  // eslint-disable-next-line eqeqeq
   if (user != undefined) {
     SidebarData[0].path = `/${user?.username}`;
   }

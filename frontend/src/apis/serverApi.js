@@ -1,5 +1,5 @@
 import axios from "axios";
-import { toastError, toastErrorCustom } from "../shared/toast";
+import { toastErrorCustom } from "../shared/toast";
 
 export const domainName= process.env.REACT_APP_BACKEND_ENV;
 

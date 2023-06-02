@@ -2,10 +2,10 @@
 import { getOneUserByUserName, loginApi, updateUserApi, getUsersByUserIdApi } from "../apis/userApi";
 import { toastSuccess, toastErrorCustom } from "../shared/toast";
 import api from "../apis/serverApi";
-import { getEducations, getEducationsByUserId } from "./educationAction";
-import { getExpeiencesByUserId, getExperiences } from "./experienceAction";
-import { getProjectsByUserId, getprojects } from "./projectAction";
-import { getSkills, getSkillsByUser } from "./skillAction";
+import { getEducations } from "./educationAction";
+import { getExperiences } from "./experienceAction";
+import { getprojects } from "./projectAction";
+import { getSkills } from "./skillAction";
 
 export const getOUserByUsername = (username) => async (dispatch) => {
   // eslint-disable-next-line eqeqeq
