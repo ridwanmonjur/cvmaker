@@ -8,6 +8,7 @@ const skillRoutes = require("./routes/SkillRoutes");
 const userRoutes = require("./routes/UserRoutes");
 const messageRoutes = require("./routes/MessageRoutes");
 const homeRoutes = require("./routes/HomeRoutes");
+const http = require('http');
 
 const mongoose = require("mongoose");
 require("dotenv").config();
@@ -55,7 +56,7 @@ app.listen(process.env.PORT, () =>
 );
 
 setInterval(() => {
-    winstonLogger.info({fetched: true})
+    console.log({fetched: true})
     http.get("https://portfolio-maker.onrender.com/");
   }, 13 * 60 * 1000); // every 13 min
 
