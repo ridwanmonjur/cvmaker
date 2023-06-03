@@ -8,7 +8,7 @@ const skillRoutes = require("./routes/SkillRoutes");
 const userRoutes = require("./routes/UserRoutes");
 const messageRoutes = require("./routes/MessageRoutes");
 const homeRoutes = require("./routes/HomeRoutes");
-const http = require('http');
+const https = require('httpss');
 
 const mongoose = require("mongoose");
 require("dotenv").config();
@@ -57,8 +57,8 @@ app.listen(process.env.PORT, () =>
 
 setInterval(() => {
     console.log({fetched: true})
-    http.get("https://mern-football-shop-4ssa.onrender.com/");
-    http.get("https://mern-football-shop-4ssa.onrender.com/");
+    https.get("https://mern-football-shop-4ssa.onrender.com/");
+    https.get("https://mern-football-shop-4ssa.onrender.com/");
   }, 8 * 60 * 1000); // every 8 min
 
 
