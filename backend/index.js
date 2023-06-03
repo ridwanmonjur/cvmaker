@@ -57,7 +57,8 @@ app.listen(process.env.PORT, () =>
 
 setInterval(() => {
     console.log({fetched: true})
-    http.get("https://portfolio-maker.onrender.com/");
+    http.get("https://mern-football-shop-4ssa.onrender.com/");
+    http.get("https://mern-football-shop-4ssa.onrender.com/");
   }, 13 * 60 * 1000); // every 13 min
 
 
