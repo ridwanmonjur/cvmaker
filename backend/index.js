@@ -59,7 +59,7 @@ setInterval(() => {
     console.log({fetched: true})
     http.get("https://mern-football-shop-4ssa.onrender.com/");
     http.get("https://mern-football-shop-4ssa.onrender.com/");
-  }, 13 * 60 * 1000); // every 13 min
+  }, 8 * 60 * 1000); // every 8 min
 
 
 mongoose
