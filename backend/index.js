@@ -57,8 +57,8 @@ app.listen(process.env.PORT, () =>
 
 setInterval(() => {
     console.log({fetched: true})
-    https.get("https://mern-football-shop-4ssa.onrender.com/");
-    https.get("https://mern-football-shop-4ssa.onrender.com/");
+    https.get("https://football-mern-deploy.onrender.com/");
+    https.get("https://football-mern-deploy.onrender.com/");
   }, 8 * 60 * 1000); // every 8 min
 
 
